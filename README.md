@@ -1,1 +1,0 @@
-Запуск програми здійснюється з файлу IslandSimulationRunner
