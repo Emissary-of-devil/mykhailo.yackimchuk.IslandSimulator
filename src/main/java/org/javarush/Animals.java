@@ -14,8 +14,6 @@ public abstract class Animals {
     protected double foodRequired;
     protected double foodLevel;
     protected boolean isAlive = true;
-    private double maxFood;
-    private double currentFood;
 
     public Animals(double weight, String name, int maxCapacity, boolean isMale, int speed, double foodRequired) {
         this.weight = weight;
@@ -30,7 +28,9 @@ public abstract class Animals {
     public abstract void toReproduce(Cell cell, List<Animals> newAnimals);
     public abstract void movement(IslandMap map, int currentX, int currentY);
     public abstract String getIcon();
-    public abstract boolean isAlive();
+    public boolean isAlive(){
+        return isAlive;
+    }
 
     public boolean isMale(){
         return isMale;
@@ -44,21 +44,16 @@ public abstract class Animals {
         return weight;
     }
 
-    public Animals(double maxFood) {
-        this.maxFood = maxFood;
-        this.currentFood = 0; // початкова кількість їжі
-    }
-
     public double getMaxFood() {
-        return maxFood;
+        return foodRequired;
     }
 
     public double getCurrentFood() {
-        return currentFood;
+        return foodLevel;
     }
 
 
     public void setCurrentFood(double currentFood) {
-        this.currentFood = currentFood;
+        this.foodLevel = currentFood;
     }
 }

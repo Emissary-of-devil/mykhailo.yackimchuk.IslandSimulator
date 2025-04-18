@@ -4,8 +4,8 @@ public class Island {
 
     private static Island instance;
     private Location[][] locations;
-    private int width;
-    private int height;
+    private int width =Config.ISLAND_WIDTH;
+    private int height = Config.ISLAND_HEIGHT;
 
     private Island(int width, int height) {
         this.width = width;
@@ -32,12 +32,5 @@ public class Island {
         return null;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
 }
 

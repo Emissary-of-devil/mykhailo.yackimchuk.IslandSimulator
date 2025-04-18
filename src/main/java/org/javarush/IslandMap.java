@@ -3,8 +3,8 @@ package org.javarush;
 import org.javarush.IslandPackage.Cell;
 
 public class IslandMap {
-    static final int WIDTH = 100;
-    static final int HEIGHT = 20;
+    static final int WIDTH = Config.ISLAND_WIDTH;
+    static final int HEIGHT = Config.ISLAND_HEIGHT;
 
     private final Cell[][] grid;
 

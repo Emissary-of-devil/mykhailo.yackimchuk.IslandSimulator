@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 class IslandSimulationRunner {
 
-    private static final int TICK_DURATION = 1000;
+    private static final int TICK_DURATION = Config.SIMULATION_TICK_DURATION_MS;
 
     private final IslandMap islandMap;
     private final ScheduledExecutorService scheduler;
@@ -40,7 +40,7 @@ class IslandSimulationRunner {
                 for (int i = 0; i < animalsPerCell; i++) {
                     Animals animal = createRandomAnimal();
                     if (animal != null) {
-                        cell.getAnimals().add(animal);
+                        cell.addAnimal(animal);
                     }
                 }
 
@@ -96,7 +96,7 @@ class IslandSimulationRunner {
         };
     }
 
-    private boolean randomGender() {
+    private static boolean randomGender() {
         return ThreadLocalRandom.current().nextBoolean();
     }
 

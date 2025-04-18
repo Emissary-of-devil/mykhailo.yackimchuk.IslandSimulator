@@ -1,10 +1,10 @@
 package org.javarush.IslandPackage;
 import org.javarush.Animals;
 import org.javarush.IslandMap;
-import org.javarush.Plants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -12,7 +12,15 @@ public class Cell {
 
     private final List<Animals> animals = new CopyOnWriteArrayList<>();
     private int plantCount = 0;
-    private static final int MAX_PLANTS = 200;
+    private int maxPlants;
+
+    private static final Random random = new Random();
+
+    public Cell() {
+        this.maxPlants = 100 + random.nextInt(101); // від 100 до 200
+        this.plantCount = maxPlants;
+    }
+
 
     public List<Animals> getAnimals() {
         return animals;
@@ -44,7 +52,7 @@ public class Cell {
     }
 
     public void growPlants() {
-        if (plantCount < MAX_PLANTS) {
+        if (plantCount < maxPlants) {
             plantCount += 1;
         }
     }
@@ -67,7 +75,7 @@ public class Cell {
         }
 
         Animals example = animals.get(0);
-        return example.getIcon(); // 🐺 🐃 🐐 тощо
+        return example.getIcon();
     }
 
 }

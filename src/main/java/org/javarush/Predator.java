@@ -19,13 +19,13 @@ public abstract class Predator extends Animals{
                 int chance = ProbabilityMatrix.getProbability(this.getClass(), prey.getClass());
                 if (ThreadLocalRandom.current().nextInt(100) < chance) {
                     cell.getAnimals().remove(prey);
-                    foodLevel = Math.min(foodRequired, foodLevel + prey.weight);
+                    foodLevel = Math.min(foodRequired, foodLevel + prey.getWeight());
                     return;
                 }
             }
         }
         // Не з'їв — зменшується рівень ситості
-        foodLevel -= 1;
+        foodLevel -= 30;
         if (foodLevel <= 0) {
             this.isAlive = false;
         }
