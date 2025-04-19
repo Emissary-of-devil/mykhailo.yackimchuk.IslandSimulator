@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class IslandSimulationRunner {
 
@@ -15,6 +16,7 @@ class IslandSimulationRunner {
 
     private final IslandMap islandMap;
     private final ScheduledExecutorService scheduler;
+    private final AtomicInteger tickCounter = new AtomicInteger(0);
 
     public IslandSimulationRunner() {
         this.islandMap = new IslandMap();
@@ -52,7 +54,10 @@ class IslandSimulationRunner {
         }
     }
 
+
     private void animalLifecycleTask() {
+        int tick = tickCounter.incrementAndGet();
+        System.out.printf("%n──── Такт %d ────%n", tick);
         islandMap.updateAnimals();
     }
 
